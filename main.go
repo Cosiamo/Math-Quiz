@@ -28,9 +28,13 @@ func randomize(num1 int, num2 int) {
 		multiplication(num1, num2)
 		return
 	// any number from 25 and 49 will return division
-	} else if arr[0] >= 25 && arr[0] <= 49 && num1 != 0 && num2 != 0{
-		division(num1, num2)
-		return
+	} else if arr[0] >= 25 && arr[0] <= 49 {
+		// can't divide a number by 0
+		if num1 == 0 || num2 == 0 {
+			division(num1 + 1, num2 + 1)
+		} else {
+			division(num1, num2)
+		}
 	// any number from 50 to 74 will return addition
 	} else if arr[0] >= 50 && arr[0] <= 74 {
 		addition(num1, num2)
@@ -40,7 +44,7 @@ func randomize(num1 int, num2 int) {
 		subtraction(num1, num2)
 		return
 	} else {
-		addition(num1, num2)
+		fmt.Println("Error randomizing which question gets asked")
 		return
 	}
 }
